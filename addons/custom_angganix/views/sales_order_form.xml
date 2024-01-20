@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Extend Sale Order Form -->
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.angganix</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add With PO Field -->
+                <group name="partner_details" position="inside">
+                    <field name="with_po"/>
+                </group>
+
+                <!-- Add Request Vendor Field -->
+                <field name="payment_term_id" position="after">
+                    <field name="request_vendor"/>
+                </field>
+                
+                <!-- Add No Kontrak Field -->
+                <field name="request_vendor" position="after">
+                    <field name="no_kontrak"/>
+                </field>
+                
+                <!-- Add Purchase Orders after Order Lines Tab -->
+                <xpath expr="//page[@name='order_lines']" position="after">
+                    <page string="Purchase Orders">
+                        <field name="purchase_orders" widget="one2many_list" options="{'no_create': True, 'no_create_edit': False}" context="{'default_sale_order_id': active_id}"/>
+                    </page>
+                </xpath>
+
+                <!-- Add Button After action_cancel -->
+                <xpath expr="//field[@name='state']" position="before">
+                    <button type="object" name="create_sales_po" string="Create PO" attrs="{'invisible': [('with_po', '=', False)]}" />
+                </xpath>
+
+                <!-- Add Button Import SO Lines after create_sales_po -->
+                <xpath expr="//field[@name='state']" position="before">
+                    <button type="object" name="import_so_lines" string="Import SO Lines" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
