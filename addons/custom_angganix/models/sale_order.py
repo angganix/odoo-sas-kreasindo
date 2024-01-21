@@ -56,7 +56,7 @@ class SaleOrder(models.Model):
                 existing_order = self.search([('no_kontrak', '=', order.no_kontrak), ('id', '!=', order.id)])
                 if existing_order:
                     raise ValidationError('No Kontrak sudah pernah diinputkan sebelumnya...!')
-        return super(SaleOrder).action_confirm()
+        return super(SaleOrder, self).action_confirm()
 
     def import_so_lines(self):
         wizard = self.env['import.so.lines.wizard'].create({})
