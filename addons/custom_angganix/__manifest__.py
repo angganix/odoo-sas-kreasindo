@@ -6,7 +6,8 @@
     'depends': ['base', 'sale', 'purchase'],
     'data': [
         'views/sales_order_form.xml',
-        'views/import_so_lines_wizard.xml'
+        'views/import_so_lines_wizard.xml',
+        'data/data.xml'
     ],
     'installable': True,
     'auto_install': False,
