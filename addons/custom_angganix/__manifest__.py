@@ -12,7 +12,8 @@
     ],
     'assets': {
         'web.assets_common': [
-            'custom_angganix/static/src/js/get_import_template.js'
+            'custom_angganix/static/src/js/get_import_template.js',
+            'custom_angganix/static/src/js/open_file_picker.js'
         ]
     },
     'installable': True,

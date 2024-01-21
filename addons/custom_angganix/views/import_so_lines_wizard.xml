@@ -8,7 +8,7 @@
                 <field name="attachment" widget="binary" filename="attachment_filename" style="display: none;"/>
                 <group class="w-50">
                     <label for="attachment" string="Attachment"/>
-                    <div style="cursor:pointer;" class="btn btn-primary text-white pt-2" onclick="$('[name=attachment]').click()">Upload Your File</div>
+                    <div style="cursor:pointer;" class="btn btn-primary text-white pt-2" onclick="open_file_picker()">Upload Your File</div>
                 </group>
                 <footer>
                     <button string="Import" type="object" class="oe_highlight" name="import_so_lines"/>
