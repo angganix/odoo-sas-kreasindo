@@ -48,7 +48,6 @@ class SaleOrder(models.Model):
             'target': 'current'
         }
         
-    @api.model
     def action_confirm(self):
         for order in self:
             print(f"Checking No Kontrak: {order.no_kontrak}")

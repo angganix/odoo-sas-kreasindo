@@ -4,7 +4,7 @@
     'version': '1.0',
     'author': 'Angga NIX',
     'category': 'Integration',
-    'depends': ['base', 'sale', 'purchase'],
+    'depends': ['sale', 'purchase'],
     'data': [
         'views/sales_order_form.xml',
         'views/import_so_lines_wizard.xml',
