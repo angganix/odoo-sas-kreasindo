@@ -14,24 +14,6 @@ class ImportSOLinesWizard(models.TransientModel):
     attachment = fields.Binary(string='Attachment', required=True)
     attachment_filename = fields.Char(string='Attachment Filename')
 
-    def generate_template(self):
-        template_content = "Product Code,Qty,Unit Price\n"
-
-        attachment_vals = {
-            'name': 'import_template.csv',
-            'datas': base64.b64encode(template_content.encode('utf-8')),
-            'store_fname': 'import_template.csv',
-            'res_model': 'import.so.lines.wizard',
-            'res_id': self.id,
-        }
-        attachment = self.env['ir.attachment'].create(attachment_vals)
-
-        return {
-            'type': 'ir.actions.act_url',
-            'url': '/web/content/%s?download=true' % attachment.id,
-            'target': 'new',
-        }
-
     def import_so_lines(self):
         if not self.attachment:
             return self._display_notification(_('Error'), _('Please select a file for import.'), 'danger')
